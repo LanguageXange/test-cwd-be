@@ -5,14 +5,17 @@ const { handleImage, handleAPI } = require("./controllers/handleImage");
 const { handleRegister } = require("./controllers/handleRegister");
 const { handleSignIn } = require("./controllers/handleSignIn");
 const { handleProfile } = require("./controllers/handleProfile");
+
+//https://knexjs.org/guide/#configuration-options
 const knex = require("knex")({
   client: "pg",
   connection: {
-    host: "127.0.0.1",
+    connectionString: process.env.DATABASE_URL,
+    host: process.env.DB_HOST,
     port: 5432,
-    user: "Cindy",
-    password: "",
-    database: "img-detect",
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
   },
 });
 
